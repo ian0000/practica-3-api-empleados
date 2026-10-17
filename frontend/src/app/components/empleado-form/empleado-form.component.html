@@ -1,0 +1,21 @@
+<section class="panel">
+  <h2>{{ empleado ? 'Editar empleado' : 'Nuevo empleado' }}</h2>
+  <p *ngIf="empleado" class="record-id">ID: {{ empleado._id }}</p>
+  <form #form="ngForm" (ngSubmit)="enviar(form)">
+    <fieldset [disabled]="ocupado">
+      <label for="nombre">Nombre</label>
+      <input id="nombre" name="nombre" [(ngModel)]="borrador.nombre" required minlength="2" maxlength="100" pattern=".*\S.*\S.*" />
+      <label for="cargo">Cargo</label>
+      <input id="cargo" name="cargo" [(ngModel)]="borrador.cargo" required minlength="2" maxlength="100" pattern=".*\S.*\S.*" />
+      <label for="departamento">Departamento</label>
+      <input id="departamento" name="departamento" [(ngModel)]="borrador.departamento" required minlength="2" maxlength="100" pattern=".*\S.*\S.*" />
+      <label for="sueldo">Sueldo</label>
+      <input id="sueldo" name="sueldo" type="number" [(ngModel)]="borrador.sueldo" required min="0" step="any" />
+      <p class="hint">Todos los campos son obligatorios. Sueldo mayor o igual a cero.</p>
+      <div class="actions">
+        <button type="submit" class="primary" [disabled]="form.invalid || ocupado">{{ empleado ? 'Guardar cambios' : 'Crear empleado' }}</button>
+        <button type="button" (click)="limpiar()" [disabled]="ocupado">Limpiar</button>
+      </div>
+    </fieldset>
+  </form>
+</section>

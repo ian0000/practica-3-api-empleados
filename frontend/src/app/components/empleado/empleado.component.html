@@ -1,0 +1,24 @@
+<main>
+  <header class="page-header">
+    <div><p class="eyebrow">Práctica 3 · Diseño de API</p><h1>Gestión de empleados</h1></div>
+    <button type="button" (click)="recargar()" [disabled]="cargando$ | async">Recargar lista</button>
+  </header>
+  <p *ngIf="error$ | async as error" class="alert error" role="alert">{{ error }}</p>
+  <p *ngIf="mensaje" class="alert success" role="status">{{ mensaje }}</p>
+  <p *ngIf="cargando$ | async" role="status">Procesando…</p>
+  <div class="layout">
+    <app-empleado-form
+      [empleado]="seleccionado"
+      [reinicio]="reinicio"
+      [ocupado]="(cargando$ | async) ?? false"
+      (guardar)="guardar($event)"
+      (cancelar)="limpiar()">
+    </app-empleado-form>
+    <app-empleado-list
+      [empleados]="(empleados$ | async) ?? []"
+      [ocupado]="(cargando$ | async) ?? false"
+      (editar)="editar($event)"
+      (eliminar)="eliminar($event)">
+    </app-empleado-list>
+  </div>
+</main>

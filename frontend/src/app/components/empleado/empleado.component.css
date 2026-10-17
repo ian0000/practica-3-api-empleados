@@ -1,0 +1,6 @@
+main { max-width: 1200px; margin: 0 auto; padding: 32px 20px; }
+.page-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 24px; }
+.eyebrow { color: #53657b; margin: 0; }
+h1 { margin: 6px 0; font-size: 1.8rem; }
+.layout { display: grid; grid-template-columns: minmax(260px, 340px) minmax(0, 1fr); gap: 24px; }
+@media (max-width: 800px) { .layout { grid-template-columns: 1fr; } .page-header { align-items: flex-start; } }

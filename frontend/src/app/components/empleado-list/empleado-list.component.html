@@ -1,0 +1,21 @@
+<section class="panel">
+  <h2>Personal registrado ({{ empleados.length }})</h2>
+  <p *ngIf="!empleados.length">No hay empleados para mostrar.</p>
+  <div class="table-scroll" *ngIf="empleados.length">
+    <table>
+      <thead><tr><th>Nombre</th><th>Cargo</th><th>Departamento</th><th>Sueldo</th><th>Operaciones</th></tr></thead>
+      <tbody>
+        <tr *ngFor="let empleado of empleados; trackBy: identificar">
+          <td>{{ empleado.nombre }}</td>
+          <td>{{ empleado.cargo }}</td>
+          <td>{{ empleado.departamento }}</td>
+          <td>{{ empleado.sueldo | number:'1.2-2' }}</td>
+          <td><div class="actions">
+            <button type="button" (click)="editar.emit(empleado)" [disabled]="ocupado" [attr.aria-label]="'Editar a ' + empleado.nombre">Editar</button>
+            <button type="button" class="danger" (click)="eliminar.emit(empleado)" [disabled]="ocupado" [attr.aria-label]="'Eliminar a ' + empleado.nombre">Eliminar</button>
+          </div></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
