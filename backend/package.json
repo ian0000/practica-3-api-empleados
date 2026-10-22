@@ -4,10 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "tsx --test tests/employee-api.test.ts",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --runInBand",
     "test:mongo": "tsx --test tests/employee-mongo.test.ts",
     "typecheck": "tsc --noEmit",
-    "dev": "tsx watch src/index.ts"
+    "dev": "tsx watch src/index.ts",
+    "test:api": "tsx --test tests/employee-api.test.ts",
+    "runtime": "node --version",
+    "stress": "node scripts/run-stress.mjs",
+    "stress:server": "node --import tsx scripts/start-stress.ts",
+    "artillery": "artillery"
   },
   "keywords": [],
   "type": "module",
@@ -21,13 +26,18 @@
   "devDependencies": {
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
+    "@types/jest": "30.0.0",
     "@types/morgan": "^1.9.10",
     "@types/node": "^26.6.4",
+    "artillery": "2.0.34",
+    "jest": "30.5.2",
+    "node": "24.22.0",
     "nodemon": "^3.1.14",
+    "ts-jest": "29.4.15",
     "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
     "tsx": "^4.23.13",
-    "typescript": "^7.0.2"
+    "typescript": "6.0.3"
   },
   "author": "",
   "license": "ISC"

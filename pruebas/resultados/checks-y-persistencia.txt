@@ -1,0 +1,9 @@
+Checks:
+ok: maxErrorRate < 1
+ok: zod.rejected == traffic.corrupt.sent
+ok: http.codes.400 == traffic.corrupt.sent
+ok: http.codes.201 == traffic.valid.sent
+ok: http.response_time.p99 < 200
+Persistencia real: llamadas create = 1075 | registros = 1075 | llamadas con sueldo negativo = 0
+Correspondencia de tráfico y persistencia: PASS
+Limpieza: Base temporal eliminada

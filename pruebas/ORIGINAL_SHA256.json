@@ -1,0 +1,22 @@
+{
+  "backend/.gitignore": "f1a9a09b226cf8e98a4286200c5d9ebd5c28924707ac3317947f8ecf06ab167b",
+  "backend/package-lock.json": "502dd59fbddca04cf858cb29f5a76eb98719856899107fa3b1d0d2b8964cc0fd",
+  "backend/package.json": "8b728c42f6287bb88afd2b08bad84eb3d4fdb58253f6308c5d5e8d3936e77120",
+  "backend/README.md": "5a7e24ed254d33f2c00081648951c8a9307b320285d66484486674767c39d1a7",
+  "backend/RETO-1.md": "46756b6a92d33dcf1362903e800a81a0b0e5ace1f3bbc838d9ad052d6600108d",
+  "backend/src/app.ts": "75fc86601d76aee7ed345db5eca7c8f266dddf4f69f65d5833a1c61ced1e099f",
+  "backend/src/config/database.ts": "692fc123271ae958f458a48d0d1177b5904e163a3ad546d39eacfc8b665f1975",
+  "backend/src/controllers/empleados.controllers.ts": "5d8c8fa3ace5dc6d3d2799575553a32307bd4dc0374cd5342261886216f4280d",
+  "backend/src/domain/employee.ts": "96df4ab39ec4f67ef7a524181e1d92324e29b6e431d9158467ba6df583335650",
+  "backend/src/dto/employee.dto.ts": "7228aafb443a647a63c526c839aab933f666fe22f6011e05b70c1bad18c61d94",
+  "backend/src/http/error-handler.ts": "24129a013d951199bbffd9d644bf8c001327521add1e963d429db17bf7626e6c",
+  "backend/src/http/response.ts": "94c4984f51e0610da238f72ca3509e1b8486cbe7df5adf2815ee2bc162e42f14",
+  "backend/src/index.ts": "3361cb8173f2c10cd8ef1f851b0ac72ca19e4af50b3909705ba1f6faf1765b7d",
+  "backend/src/models/empleado.ts": "5bce0f00a5c42460dfe5fa70c30f1ad69b9be125dc70031c8df84cc819cc85e7",
+  "backend/src/repository/empleado.repositorio.ts": "c7b86ce2bab54a888d8f15e31af5e416a412fbc975633904b1b05356de2a5dbc",
+  "backend/src/repository/IEmployeeRepository.ts": "ee0ca22b2a8ba51c820adee62c23b9c5e699b3e7a243740cecc2ffafa115c63d",
+  "backend/src/routes/empleados.routes.ts": "a672ee9cab28d41077cd7c557e419d1e1f52912447e3be8ca237f7f9f028ec9e",
+  "backend/tests/employee-api.test.ts": "531b8f2897416bbf0e28fbaae34241d2eca971d85e39fe9acb440b0141a4ccd8",
+  "backend/tests/employee-mongo.test.ts": "8f3348536c21ecfbb815f62f3377d5d4c47747cbad330bbcc1721471bd02cc7c",
+  "backend/tsconfig.json": "e43e0bd8662ba7f5ab4c601879eb77b5f15a49f1e56e262a8b146dcfbda8c787"
+}

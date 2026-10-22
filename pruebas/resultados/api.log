@@ -1,0 +1,81 @@
+
+> backend@1.0.0 test:api
+> tsx --test tests/employee-api.test.ts
+
+GET /api/empleados 200 3.698 ms - 125
+POST /api/empleados 201 1.572 ms - 278
+GET /api/empleados/000000000000000000000001 200 0.864 ms - 282
+PATCH /api/empleados/000000000000000000000001 200 1.182 ms - 283
+PUT /api/empleados/000000000000000000000001 400 1.500 ms - 343
+PUT /api/empleados/000000000000000000000001 200 0.337 ms - 275
+DELETE /api/empleados/000000000000000000000001 200 0.642 ms - 112
+GET /api/empleados/000000000000000000000001 404 0.427 ms - 88
+GET /api/empleados 200 0.339 ms - 125
+✔ CRUD HTTP: creación 201, consulta por ID, PATCH parcial, PUT completo y eliminación física (308.9761ms)
+POST /api/empleados 201 0.421 ms - 278
+POST /api/empleados 201 0.322 ms - 279
+POST /api/empleados 201 0.264 ms - 280
+GET /api/empleados 200 0.322 ms - 736
+GET /api/empleados?page=2&limit=2 200 0.515 ms - 329
+GET /api/empleados?limit=2 200 0.252 ms - 531
+GET /api/empleados?page=1 200 0.235 ms - 737
+GET /api/empleados?page=9&limit=2 200 0.185 ms - 125
+GET /api/empleados?page=0 400 0.521 ms - 158
+GET /api/empleados?page=1.5 400 0.347 ms - 166
+GET /api/empleados?limit=101 400 0.416 ms - 159
+GET /api/empleados?limit=no 400 0.347 ms - 167
+GET /api/empleados?page[]=1 400 0.444 ms - 146
+GET /api/empleados?sort=nombre 400 0.241 ms - 144
+✔ Listado completo y paginado con total, valores por defecto y límites seguros (40.517ms)
+POST /api/empleados 400 0.533 ms - 425
+POST /api/empleados 400 0.315 ms - 164
+POST /api/empleados 400 0.480 ms - 156
+POST /api/empleados 400 0.591 ms - 171
+POST /api/empleados 400 0.325 ms - 155
+POST /api/empleados 400 0.384 ms - 170
+POST /api/empleados 400 0.313 ms - 143
+POST /api/empleados 400 0.224 ms - 144
+POST /api/empleados 400 0.482 ms - 173
+GET /api/empleados 200 0.258 ms - 125
+PATCH /api/empleados/ffffffffffffffffffffffff 400 0.433 ms - 158
+PATCH /api/empleados/ffffffffffffffffffffffff 400 0.307 ms - 209
+PATCH /api/empleados/ffffffffffffffffffffffff 400 0.412 ms - 210
+PATCH /api/empleados/ffffffffffffffffffffffff 400 0.412 ms - 169
+✔ DTO rechaza tipos incorrectos, espacios, sueldo negativo y propiedades no permitidas (44.8953ms)
+GET /api/empleados/invalido 400 0.842 ms - 167
+GET /api/empleados/ffffffffffffffffffffffff 404 0.267 ms - 88
+PUT /api/empleados/invalido 400 0.293 ms - 167
+PUT /api/empleados/ffffffffffffffffffffffff 404 0.261 ms - 88
+PATCH /api/empleados/invalido 400 0.222 ms - 167
+PATCH /api/empleados/ffffffffffffffffffffffff 404 0.258 ms - 88
+DELETE /api/empleados/invalido 400 0.268 ms - 167
+DELETE /api/empleados/ffffffffffffffffffffffff 404 0.176 ms - 88
+✔ Parámetros inválidos producen 400; IDs válidos ausentes producen 404 en todas las operaciones (18.7717ms)
+GET /api/desconocida 404 0.247 ms - 84
+✔ El wrapper también cubre JSON roto, cuerpos excesivos y rutas inexistentes (12.3166ms)
+Error no controlado: Error: detalle privado de persistencia
+    at MemoryEmployeeRepository.repository.findAll (C:\Users\USER\Desktop\ups\MSNOTES\PATRONES DE DISEÑO DE API\Practica 3\backend\tests\employee-api.test.ts:180:44)
+    at getEmpleados (C:\Users\USER\Desktop\ups\MSNOTES\PATRONES DE DISEÑO DE API\Practica 3\backend\src\controllers\empleados.controllers.ts:12:47)
+    at Layer.handleRequest (C:\Users\USER\Desktop\ups\MSNOTES\PATRONES DE DISEÑO DE API\Practica 3\backend\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\USER\Desktop\ups\MSNOTES\PATRONES DE DISEÑO DE API\Practica 3\backend\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\USER\Desktop\ups\MSNOTES\PATRONES DE DISEÑO DE API\Practica 3\backend\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\USER\Desktop\ups\MSNOTES\PATRONES DE DISEÑO DE API\Practica 3\backend\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\USER\Desktop\ups\MSNOTES\PATRONES DE DISEÑO DE API\Practica 3\backend\node_modules\router\lib\layer.js:152:17)
+    at C:\Users\USER\Desktop\ups\MSNOTES\PATRONES DE DISEÑO DE API\Practica 3\backend\node_modules\router\index.js:295:15
+    at processParams (C:\Users\USER\Desktop\ups\MSNOTES\PATRONES DE DISEÑO DE API\Practica 3\backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\USER\Desktop\ups\MSNOTES\PATRONES DE DISEÑO DE API\Practica 3\backend\node_modules\router\index.js:291:5)
+GET /api/empleados 500 1.455 ms - 92
+✔ Errores internos del repositorio se interceptan sin exponer detalles ni stack (7.7281ms)
+POST /api/v1/employees 201 0.395 ms - 278
+GET /api/empleados/000000000000000000000001 200 0.188 ms - 282
+POST /api/v1/employees 400 0.352 ms - 155
+GET /api/v1/employees 200 0.181 ms - 327
+✔ Alias de la nueva consigna: POST válido 201 y payload corrupto 400 (12.9146ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4543.7741

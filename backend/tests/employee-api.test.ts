@@ -187,3 +187,20 @@ test('Errores internos del repositorio se interceptan sin exponer detalles ni st
     });
   }, repository);
 });
+
+
+test('Alias de la nueva consigna: POST válido 201 y payload corrupto 400', async () => {
+  await withApi(async original => {
+    const url = original.replace('/api/empleados', '/api/v1/employees');
+    const createdResponse = await fetch(url, json('POST', data));
+    assert.equal(createdResponse.status, 201);
+    const created = await createdResponse.json();
+    assert.ok(created.data._id);
+    assert.equal((await (await fetch(original + '/' + created.data._id)).json()).data._id, created.data._id);
+    const corrupt = await fetch(url, json('POST', { nombre: 'Al', cargo: 'Dev', departamento: 'TI', sueldo: -500 }));
+    assert.equal(corrupt.status, 400);
+    const rejected = await corrupt.json();
+    assert.ok(rejected.errors.some((issue: { field: string }) => issue.field === 'sueldo'));
+    assert.equal((await (await fetch(url)).json()).meta.total, 1);
+  });
+});

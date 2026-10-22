@@ -21,7 +21,7 @@ Puedes decir:
 Controlador Express -> IEmployeeRepository <- MongoEmployeeRepository -> Mongoose
 ```
 
-**Cómo lo demuestras:** ejecuta `npm run typecheck` y `npm test` desde backend. Las pruebas inyectan un repositorio en memoria en `createApp(repository)`, hacen peticiones HTTP y verifican que Mongoose no se cargó.
+**Cómo lo demuestras:** ejecuta `npm run typecheck` y `npm run test:api` desde backend. Las pruebas inyectan un repositorio en memoria en `createApp(repository)`, hacen peticiones HTTP y verifican que Mongoose no se cargó.
 
 **Si preguntan cómo cambiarías a PostgreSQL:** implementarías la misma interfaz y cambiarías la implementación inyectada en index.ts. La interfaz, los DTO y el controlador podrían conservarse si se mantiene el contrato de IDs y datos.
 
@@ -133,7 +133,7 @@ La colección `Practica-3.postman_collection.json` guarda automáticamente `empl
 
 ## Qué evidencia corresponde a cada prueba
 
-- Backend: 6 pruebas con servidor HTTP temporal y repositorio en memoria.
+- Backend: 7 pruebas HTTP con servidor temporal y repositorio en memoria (`npm run test:api`), más 7 pruebas unitarias Jest (`npm test`).
 - MongoDB: 1 prueba de integración separada, con lectura de lo persistido y limpieza de su registro temporal.
 - Angular: 5 pruebas en navegador, con HTTP simulado. Cubren referencias inmutables y eventos reales del DOM.
 - Build Angular: compila TypeScript y las plantillas con tipado estricto, y genera la aplicación.

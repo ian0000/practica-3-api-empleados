@@ -1,3 +1,5 @@
+> Nueva práctica de pruebas: consulta [las guías, capturas e informe](pruebas/README.md).
+
 # Práctica 3 · Sistema de Gestión de Empleados
 
 Implementación sencilla de los cuatro retos: Repository, DTO con Zod, respuestas uniformes, estado reactivo y componentes Smart/Dumb. Se conservan nombre, cargo, departamento, sueldo y el identificador `_id` de MongoDB.
@@ -9,7 +11,7 @@ Implementación sencilla de los cuatro retos: Repository, DTO con Zod, respuesta
 
 ## Arranque local
 
-Requisitos: Node.js 20+ compatible con las dependencias instaladas, npm y MongoDB. Angular CLI se utiliza desde el proyecto con npm; no requiere instalación global. La verificación local se realizó con Node.js 22.16.0.
+Requisitos: Node.js, npm y MongoDB. El backend instala Node.js 24.22.0 como dependencia local para las herramientas de pruebas; compruébalo con `npm.cmd run runtime` desde `backend`. Angular CLI se utiliza desde el proyecto con npm; no requiere instalación global.
 
 Clona el repositorio y entra a su carpeta:
 
@@ -48,7 +50,7 @@ cd practica-3-api-empleados
 
 4. Abre [Angular](http://localhost:4200). La API usa [localhost:3000/api/empleados](http://localhost:3000/api/empleados).
 
-Ejecuta `npm ci` en ambas carpetas para instalar las dependencias de los archivos de bloqueo. El repositorio contiene el código fuente y la documentación de la práctica.
+Ejecuta `npm ci` en ambas carpetas para instalar las dependencias de los archivos de bloqueo.
 
 ## Contratos REST
 
@@ -117,10 +119,12 @@ Desde backend:
 ```powershell
 npm run typecheck
 npm test
+npm run test:api
 npm run test:mongo
 ```
 
-- `npm test`: 6 pruebas con HTTP real y repositorio en memoria; no necesita MongoDB.
+- `npm test`: 7 pruebas unitarias Jest del controlador con mocks; no necesita MongoDB.
+- `npm run test:api`: 7 pruebas con HTTP real y repositorio en memoria, incluido el alias `/api/v1/employees`; no necesita MongoDB.
 - `npm run test:mongo`: 1 prueba con persistencia real. Necesita MongoDB activo. Crea y elimina únicamente su empleado temporal y comprueba que el total de registros regresa al valor inicial.
 
 Desde frontend:

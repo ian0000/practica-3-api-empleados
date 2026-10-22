@@ -6,12 +6,15 @@ export function createEmpleadosRoutes(repository: IEmployeeRepository) {
   const router = Router();
   const empleado = createEmpleadoController(repository);
 
-  router.get('/empleados', empleado.getEmpleados);
-  router.get('/empleados/:id', empleado.getEmpleadoById);
-  router.post('/empleados', empleado.addEmpleado);
-  router.put('/empleados/:id', empleado.updateEmpleado);
-  router.patch('/empleados/:id', empleado.updateEmpleado);
-  router.delete('/empleados/:id', empleado.deleteEmpleado);
+  // Conserva el contrato del frontend y añade la ruta de la nueva consigna.
+  for (const path of ['/empleados', '/v1/employees']) {
+    router.get(path, empleado.getEmpleados);
+    router.get(path + '/:id', empleado.getEmpleadoById);
+    router.post(path, empleado.addEmpleado);
+    router.put(path + '/:id', empleado.updateEmpleado);
+    router.patch(path + '/:id', empleado.updateEmpleado);
+    router.delete(path + '/:id', empleado.deleteEmpleado);
+  }
 
   return router;
 }

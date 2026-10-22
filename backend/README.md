@@ -1,3 +1,5 @@
+> Nueva práctica completada: [Jest, Artillery y reporte de ingeniería](../pruebas/README.md). `npm test` ejecuta Jest; las pruebas HTTP anteriores se ejecutan con `npm run test:api`.
+
 > Solución implementada: consulta el [README general](../README.md) para los contratos actuales, el arranque y las pruebas, y [DEFENSA.md](../DEFENSA.md) para exponer los cuatro retos. El texto siguiente conserva el enunciado inicial del laboratorio.
 # Unidad 2: Arquitectura y Patrones de Diseño de APIs
 

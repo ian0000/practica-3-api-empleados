@@ -1,0 +1,53 @@
+config:
+  target: "http://localhost:3000"
+  processor: "./stress-processor.cjs"
+  plugins:
+    expect:
+      reportFailuresAsErrors: true
+      outputFormat: silent
+    ensure:
+      maxErrorRate: 1
+      thresholds:
+        - "http.response_time.p99": 200
+      conditions:
+        - expression: "http.codes.201 == traffic.valid.sent"
+        - expression: "http.codes.400 == traffic.corrupt.sent"
+        - expression: "zod.rejected == traffic.corrupt.sent"
+  # Todos los checks se mantienen en un solo bloque ensure.
+  # Los 400 esperados por validación no son fallos de transporte.
+  phases:
+    - duration: 20
+      arrivalRate: 5
+      name: "1. Calentamiento: 5 usuarios por segundo"
+    - duration: 30
+      arrivalRate: 15
+      rampTo: 50
+      name: "2. Saturacion: incremento de 15 a 50 usuarios por segundo"
+scenarios:
+  - name: "Payload valido y payload corrupto por usuario"
+    flow:
+      - post:
+          url: "/api/v1/employees"
+          beforeRequest: "contarValido"
+          json:
+            nombre: "Andrés Mendoza"
+            cargo: "Software Architect"
+            departamento: "I+D"
+            sueldo: 4200
+          capture:
+            json: "$.data._id"
+            as: "employeeId"
+          expect:
+            - statusCode: 201
+      - think: 1
+      - post:
+          url: "/api/v1/employees"
+          beforeRequest: "contarCorrupto"
+          afterResponse: "comprobarZod"
+          json:
+            nombre: "Al"
+            cargo: "Dev"
+            departamento: "TI"
+            sueldo: -500
+          expect:
+            - statusCode: 400

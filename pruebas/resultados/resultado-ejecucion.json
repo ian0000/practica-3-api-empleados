@@ -1,0 +1,7 @@
+{
+  "artilleryExitCode": 0,
+  "persistenciaVerificada": true,
+  "endpoint": "http://127.0.0.1:63004",
+  "node": "v24.22.0",
+  "dbName": "practica5_stress_1792694853774"
+}

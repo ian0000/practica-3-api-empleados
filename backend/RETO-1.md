@@ -16,7 +16,7 @@ Desde backend:
 
 ```powershell
 npm run typecheck
-npm test
+npm run test:api
 ```
 
 La solución completa de los cuatro retos, el wrapper y los contratos actualizados se documentan en [README general](../README.md) y [DEFENSA.md](../DEFENSA.md).
